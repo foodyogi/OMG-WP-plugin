@@ -1,0 +1,48 @@
+/* Final Fixes: Logo Distortion and Registration Page Padding ONLY */
+
+/* Fix 1: Correct logo distortion - maintain proper aspect ratio */
+.omg-admin-wrap .omg-logo,
+.omg-admin-wrap .omg-admin-logo,
+.omg-admin-wrap .omg-header img,
+.omg-admin-wrap .omg-admin-header img,
+.omg-admin-wrap img[src*="newOMGincLogo2022HorizontalWEB.jpg"] {
+    display: block !important;
+    height: 60px !important;
+    width: auto !important; /* Maintain aspect ratio */
+    max-width: 200px !important;
+    filter: none !important;
+    margin-bottom: 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    object-fit: contain !important; /* Prevent distortion */
+}
+
+/* Fix 2: Add proper padding to registration page content */
+.omg-admin-wrap .omg-card {
+    padding: 25px !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+
+/* Fix 3: Ensure registration page has proper content padding */
+.omg-admin-wrap .wrap {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Fix 4: Center headers properly */
+.omg-admin-wrap .omg-header,
+.omg-admin-wrap .omg-admin-header {
+    text-align: center !important;
+}
+
+.omg-admin-wrap .omg-header h1,
+.omg-admin-wrap .omg-admin-header h1 {
+    text-align: center !important;
+}
+
+.omg-admin-wrap .omg-header p,
+.omg-admin-wrap .omg-admin-header p {
+    text-align: center !important;
+}
+

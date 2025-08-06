@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OM Guarantee Dashboard - Strict Grid Layout</title>
+    <link rel="stylesheet" href="omg-strict-grid-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ROOT CONTAINER with Strict Grid Specification -->
+    <div class="omg-dashboard">
+        
+        <!-- Header -->
+        <div class="omg-dashboard__header">
+            <img src="newOMGincLogo2022HorizontalWEB.jpg" alt="OM Guarantee logo" class="omg-dashboard__logo">
+            <img src="OMGcertificate2022WhiteFULL.png" alt="Certification badge" class="omg-dashboard__badge">
+        </div>
+
+        <!-- Summary Row -->
+        <div class="omg-dashboard__summary">
+            <div class="omg-card">
+                <div class="counter">100%</div>
+                <div class="label">Total Impact</div>
+            </div>
+            <div class="omg-card">
+                <div class="amount">$25,000</div>
+                <div class="label">Total Donated</div>
+            </div>
+            <div class="omg-card">
+                <div class="counter">420</div>
+                <div class="label">Blockchain Transactions</div>
+            </div>
+        </div>
+
+        <!-- Details Row -->
+        <div class="omg-dashboard__impact omg-card">
+            <h3>Impact by Product</h3>
+            <div class="progress-list">
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Product A</span>
+                        <span class="progress-value">67%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 67%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Product B</span>
+                        <span class="progress-value">42%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 42%;"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Product C</span>
+                        <span class="progress-value">25%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="omg-dashboard__charities omg-card">
+            <h3>Top Charities</h3>
+            <div class="charity-list">
+                <div class="charity-item">
+                    <span class="charity-name">American Red Cross</span>
+                    <span class="charity-amount">$10,000</span>
+                </div>
+                <div class="charity-item">
+                    <span class="charity-name">Doctors Without Borders</span>
+                    <span class="charity-amount">$8,500</span>
+                </div>
+                <div class="charity-item">
+                    <span class="charity-name">World Wildlife Fund</span>
+                    <span class="charity-amount">$6,500</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="omg-dashboard__customer omg-card">
+            <h3>Customer Impact</h3>
+            <div class="counter">123</div>
+            <div class="label">customers inspired</div>
+        </div>
+
+        <!-- Actions Row -->
+        <div class="omg-dashboard__blockchain omg-card">
+            <h3>Blockchain Verification</h3>
+            <p>Verify all donations on the blockchain for complete transparency.</p>
+            <button class="omg-button">Verify on Blockchain</button>
+        </div>
+        
+        <div class="omg-dashboard__donation omg-card">
+            <h3>Donation Tracker</h3>
+            <p>Track real-time donation processing and impact delivery.</p>
+            <div class="tracker-status">
+                <span class="status-indicator active"></span>
+                <span class="status-text">Active - Processing donations</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Individual Shortcode Examples -->
+    <div class="shortcode-examples">
+        <h2>Individual Shortcode Examples</h2>
+        
+        <!-- [omg_impact_dashboard] - Complete Dashboard -->
+        <div class="example">
+            <h3>[omg_impact_dashboard]</h3>
+            <div class="omg-dashboard">
+                <div class="omg-dashboard__header">
+                    <img src="newOMGincLogo2022HorizontalWEB.jpg" alt="OM Guarantee logo" class="omg-dashboard__logo">
+                    <img src="OMGcertificate2022WhiteFULL.png" alt="Certification badge" class="omg-dashboard__badge">
+                </div>
+                <div class="omg-dashboard__summary">
+                    <div class="omg-card">
+                        <div class="counter">100%</div>
+                        <div class="label">Total Impact</div>
+                    </div>
+                    <div class="omg-card">
+                        <div class="amount">$25,000</div>
+                        <div class="label">Total Donated</div>
+                    </div>
+                    <div class="omg-card">
+                        <div class="counter">420</div>
+                        <div class="label">Blockchain Transactions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- [omg_certification_badge] -->
+        <div class="example">
+            <h3>[omg_certification_badge]</h3>
+            <div class="omg-dashboard__header" style="max-width: 600px;">
+                <img src="newOMGincLogo2022HorizontalWEB.jpg" alt="OM Guarantee logo" class="omg-dashboard__logo">
+                <img src="OMGcertificate2022WhiteFULL.png" alt="Certification badge" class="omg-dashboard__badge">
+            </div>
+        </div>
+
+        <!-- [omg_impact_counter] -->
+        <div class="example">
+            <h3>[omg_impact_counter]</h3>
+            <div class="omg-dashboard__summary" style="max-width: 800px;">
+                <div class="omg-card">
+                    <div class="counter">100%</div>
+                    <div class="label">Total Impact</div>
+                </div>
+                <div class="omg-card">
+                    <div class="amount">$25,000</div>
+                    <div class="label">Total Donated</div>
+                </div>
+                <div class="omg-card">
+                    <div class="counter">420</div>
+                    <div class="label">Blockchain Transactions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- [omg_blockchain_verification] -->
+        <div class="example">
+            <h3>[omg_blockchain_verification]</h3>
+            <div class="omg-card" style="max-width: 400px;">
+                <h3>Blockchain Verification</h3>
+                <p>Verify all donations on the blockchain for complete transparency.</p>
+                <button class="omg-button">Verify on Blockchain</button>
+            </div>
+        </div>
+
+        <!-- [omg_customer_impact] -->
+        <div class="example">
+            <h3>[omg_customer_impact]</h3>
+            <div class="omg-card" style="max-width: 300px;">
+                <h3>Customer Impact</h3>
+                <div class="counter">123</div>
+                <div class="label">customers inspired</div>
+            </div>
+        </div>
+
+        <!-- [omg_donation_tracker] -->
+        <div class="example">
+            <h3>[omg_donation_tracker]</h3>
+            <div class="omg-card" style="max-width: 400px;">
+                <h3>Donation Tracker</h3>
+                <p>Track real-time donation processing and impact delivery.</p>
+                <div class="tracker-status">
+                    <span class="status-indicator active"></span>
+                    <span class="status-text">Active - Processing donations</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

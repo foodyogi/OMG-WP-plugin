@@ -1,0 +1,50 @@
+/* Logo Visibility and Header Centering Fixes ONLY */
+
+/* Fix 1: Make logo visible (remove white filter that makes it invisible) */
+.omg-admin-wrap .omg-logo,
+.omg-admin-wrap .omg-admin-logo,
+.omg-admin-wrap .omg-header img,
+.omg-admin-wrap .omg-admin-header img,
+.omg-admin-wrap img[src*="newOMGincLogo2022HorizontalWEB.jpg"] {
+    display: block !important;
+    height: 60px !important;
+    width: auto !important;
+    max-width: 200px !important;
+    filter: none !important; /* Remove the white filter that makes logo invisible */
+    margin-bottom: 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Fix 2: Center all header content */
+.omg-admin-wrap .omg-header,
+.omg-admin-wrap .omg-admin-header {
+    text-align: center !important;
+    display: block !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    padding: 30px !important;
+    margin: 0 0 30px 0 !important;
+    border-radius: 8px !important;
+}
+
+/* Fix 3: Center header text */
+.omg-admin-wrap .omg-header h1,
+.omg-admin-wrap .omg-admin-header h1 {
+    text-align: center !important;
+    color: white !important;
+    font-size: 32px !important;
+    margin: 0 0 10px 0 !important;
+    font-weight: 300 !important;
+}
+
+.omg-admin-wrap .omg-header p,
+.omg-admin-wrap .omg-admin-header p,
+.omg-admin-wrap .omg-subtitle {
+    text-align: center !important;
+    color: white !important;
+    opacity: 0.9 !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+}
+

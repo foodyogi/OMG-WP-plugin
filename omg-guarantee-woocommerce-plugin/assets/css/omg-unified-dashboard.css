@@ -1,0 +1,500 @@
+/* OM Guarantee Dashboard - Unified Design */
+
+/* CSS Variables for Consistency */
+:root {
+  --omg-blue: #3A8CCB;
+  --omg-white: #FFFFFF;
+  --omg-gray-light: #F8F9FA;
+  --omg-gray-medium: #E9ECEF;
+  --omg-text-dark: #333333;
+  --omg-text-medium: #555555;
+  --omg-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --omg-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --omg-radius: 8px;
+  --omg-spacing: 20px;
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  line-height: 1.6;
+  color: var(--omg-text-medium);
+  background: var(--omg-gray-light);
+  margin: 0;
+  padding: 20px;
+}
+
+/* Outer Wrapper */
+.omg-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .omg-dashboard {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  
+  .omg-summary {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+}
+
+/* Header Styles */
+.omg-dashboard__header {
+  background: var(--omg-white);
+  border-radius: var(--omg-radius);
+  box-shadow: var(--omg-shadow);
+  padding: var(--omg-spacing);
+  margin-bottom: 10px;
+}
+
+.omg-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.omg-badge {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+}
+
+/* Summary Section */
+.omg-summary {
+  margin-bottom: 10px;
+}
+
+.omg-summary .omg-card {
+  flex: 1;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+/* Card Base Styles */
+.omg-card {
+  background: var(--omg-white);
+  border-radius: var(--omg-radius);
+  box-shadow: var(--omg-shadow);
+  padding: var(--omg-spacing);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.omg-card:hover {
+  box-shadow: var(--omg-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Typography */
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--omg-text-dark);
+  margin: 0 0 16px 0;
+  border-bottom: 2px solid var(--omg-gray-medium);
+  padding-bottom: 8px;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--omg-text-medium);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+/* Metrics */
+.omg-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.omg-metric--center {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.omg-metric__value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--omg-blue);
+  line-height: 1.1;
+}
+
+.omg-metric__value--large {
+  font-size: 2.5rem;
+}
+
+.omg-metric__label {
+  font-size: 1rem;
+  color: var(--omg-text-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Progress Bars */
+.omg-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.omg-progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.omg-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.omg-progress-label {
+  font-weight: 500;
+  color: var(--omg-text-dark);
+  font-size: 1rem;
+}
+
+.omg-progress-value {
+  font-weight: 600;
+  color: var(--omg-blue);
+  font-size: 1rem;
+}
+
+.omg-progress-bar {
+  height: 12px;
+  background: var(--omg-gray-medium);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.omg-progress-fill {
+  height: 100%;
+  background: var(--omg-blue);
+  border-radius: 6px;
+  width: 0%;
+  transition: width 1s ease-in-out;
+  position: relative;
+}
+
+.omg-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Charity List */
+.omg-charity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.omg-charity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--omg-gray-light);
+  border-radius: var(--omg-radius);
+  border-left: 4px solid var(--omg-blue);
+}
+
+.omg-charity-name {
+  font-weight: 500;
+  color: var(--omg-text-dark);
+  font-size: 1rem;
+}
+
+.omg-charity-amount {
+  font-weight: 600;
+  color: var(--omg-blue);
+  font-size: 1rem;
+}
+
+/* Buttons */
+.omg-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--omg-blue);
+  color: var(--omg-white);
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Poppins, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.omg-button:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: var(--omg-shadow-hover);
+}
+
+.omg-button:active {
+  transform: translateY(0);
+}
+
+.omg-button:focus {
+  outline: 3px solid rgba(58, 140, 203, 0.3);
+  outline-offset: 2px;
+}
+
+/* Tracker Status */
+.omg-tracker-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.omg-status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--omg-gray-medium);
+}
+
+.omg-status-indicator--active {
+  background: #28a745;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.omg-status-text {
+  font-size: 1rem;
+  color: var(--omg-text-medium);
+  font-weight: 500;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .omg-dashboard__header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .omg-logo {
+    height: 40px;
+  }
+  
+  .omg-badge {
+    height: 50px;
+    width: 50px;
+  }
+  
+  .omg-metric__value {
+    font-size: 1.8rem;
+  }
+  
+  .omg-metric__value--large {
+    font-size: 2.2rem;
+  }
+  
+  .omg-progress-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .omg-charity-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+  
+  .omg-dashboard {
+    padding: 12px;
+    grid-gap: 15px;
+  }
+  
+  .omg-card {
+    padding: 16px;
+  }
+  
+  .omg-metric__value {
+    font-size: 1.6rem;
+  }
+  
+  .omg-metric__value--large {
+    font-size: 2rem;
+  }
+}
+
+/* Shortcode Examples Styling */
+.omg-shortcode-examples {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--omg-white);
+  border-radius: var(--omg-radius);
+  box-shadow: var(--omg-shadow);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.omg-shortcode-examples h2 {
+  color: var(--omg-blue);
+  margin: 0 0 24px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--omg-gray-medium);
+  padding-bottom: 8px;
+}
+
+.shortcode-demo {
+  margin-bottom: 32px;
+  padding: 20px;
+  background: var(--omg-gray-light);
+  border-radius: var(--omg-radius);
+  border-left: 4px solid var(--omg-blue);
+}
+
+.shortcode-demo h3 {
+  margin: 0 0 16px 0;
+  color: var(--omg-blue);
+  font-family: 'Courier New', monospace;
+  background: var(--omg-white);
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 1rem;
+  border: none;
+}
+
+/* WordPress Compatibility */
+.omg-dashboard * {
+  box-sizing: border-box;
+}
+
+.omg-dashboard {
+  clear: both;
+  margin: 20px 0;
+  font-family: Poppins, sans-serif !important;
+}
+
+/* Ensure proper spacing in WordPress themes */
+.omg-dashboard p,
+.omg-dashboard h1,
+.omg-dashboard h2,
+.omg-dashboard h3,
+.omg-dashboard h4,
+.omg-dashboard h5,
+.omg-dashboard h6 {
+  margin-top: 0;
+}
+
+/* Override theme styles that might interfere */
+.omg-dashboard img {
+  max-width: 100%;
+  height: auto;
+  border: none;
+  box-shadow: none;
+}
+
+.omg-dashboard button {
+  font-family: inherit;
+}
+
+/* Print Styles */
+@media print {
+  .omg-dashboard {
+    box-shadow: none;
+    background: white;
+    max-width: none;
+    padding: 0;
+  }
+  
+  .omg-card {
+    box-shadow: none;
+    border: 1px solid var(--omg-gray-medium);
+    break-inside: avoid;
+  }
+  
+  .omg-button {
+    background: var(--omg-gray-light) !important;
+    color: var(--omg-text-dark) !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .omg-card,
+  .omg-progress-fill,
+  .omg-button {
+    transition: none;
+  }
+  
+  .omg-progress-fill::after,
+  .omg-status-indicator--active {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --omg-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --omg-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+  
+  .omg-card {
+    border: 2px solid var(--omg-gray-medium);
+  }
+  
+  .omg-progress-bar {
+    border: 1px solid var(--omg-text-dark);
+  }
+}
+

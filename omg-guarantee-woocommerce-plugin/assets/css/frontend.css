@@ -1,0 +1,472 @@
+/* OM Guarantee WooCommerce Frontend Styles */
+
+/* Certification Badge */
+.omg-certification-badge {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.omg-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.omg-badge-image {
+    flex-shrink: 0;
+}
+
+.omg-cert-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.omg-badge-content {
+    flex: 1;
+}
+
+.omg-badge-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.omg-impact-statement {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Badge Sizes */
+.omg-badge-small .omg-cert-image {
+    width: 80px;
+    height: 80px;
+}
+
+.omg-badge-small .omg-badge-text {
+    font-size: 14px;
+}
+
+.omg-badge-small .omg-impact-statement {
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
+.omg-badge-large .omg-cert-image {
+    width: 160px;
+    height: 160px;
+}
+
+.omg-badge-large .omg-badge-text {
+    font-size: 18px;
+}
+
+.omg-badge-large .omg-impact-statement {
+    font-size: 16px;
+    padding: 16px 20px;
+}
+
+/* Dark Theme */
+.omg-badge-dark {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-color: #34495e;
+}
+
+.omg-badge-dark .omg-badge-text {
+    color: #ecf0f1;
+}
+
+.omg-badge-dark .omg-impact-statement {
+    background: linear-gradient(135deg, #3498db 0%, #9b59b6 100%);
+}
+
+/* Product Impact Display */
+.omg-product-impact {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.omg-impact-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.omg-impact-icon {
+    font-size: 20px;
+}
+
+.omg-impact-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+}
+
+.omg-price-impact {
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* Cart and Checkout Impact */
+.omg-cart-impact td,
+.omg-checkout-impact td {
+    border-top: 2px solid #667eea !important;
+}
+
+.omg-cart-impact-details,
+.omg-checkout-impact-details {
+    text-align: right;
+}
+
+.omg-impact-amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.omg-impact-description {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Thank You Page Impact */
+.omg-thankyou-impact {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.omg-thankyou-impact h2 {
+    margin: 0 0 20px 0;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.omg-impact-summary {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.omg-donation-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.omg-donation-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.omg-donation-list li:last-child {
+    border-bottom: none;
+}
+
+.omg-verify-link {
+    color: #fff;
+    text-decoration: underline;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+/* Impact Counter */
+.omg-impact-counter {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.omg-counter-stats {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.omg-stat {
+    text-align: center;
+}
+
+.omg-stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.omg-stat-label {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Blockchain Verification */
+.omg-blockchain-verification {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.omg-blockchain-verification h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.omg-transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.omg-transaction {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.omg-tx-info {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.omg-tx-date {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.omg-blockchain-link {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.omg-blockchain-link:hover {
+    text-decoration: underline;
+}
+
+/* Customer Impact */
+.omg-customer-impact {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.omg-customer-impact h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.omg-total-impact {
+    font-size: 24px;
+    color: #667eea;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.omg-impact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.omg-impact-item {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.omg-amount {
+    font-weight: 700;
+    color: #667eea;
+}
+
+/* Donation Tracker */
+.omg-donation-tracker {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.omg-donation-tracker h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.omg-charity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.omg-charity-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.omg-charity-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.omg-charity-stats {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.omg-count {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .omg-badge-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .omg-cert-image {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .omg-counter-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .omg-impact-badge {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .omg-charity-item {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .omg-thankyou-impact {
+        padding: 20px;
+    }
+    
+    .omg-thankyou-impact h2 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .omg-certification-badge,
+    .omg-impact-counter,
+    .omg-blockchain-verification,
+    .omg-customer-impact,
+    .omg-donation-tracker {
+        padding: 15px;
+        margin: 15px 0;
+    }
+    
+    .omg-cert-image {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .omg-badge-text {
+        font-size: 14px !important;
+    }
+    
+    .omg-impact-statement {
+        font-size: 12px !important;
+        padding: 10px !important;
+    }
+}
+
+/* Animation Effects */
+.omg-certification-badge {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.omg-certification-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.omg-blockchain-link {
+    transition: color 0.3s ease;
+}
+
+.omg-impact-badge {
+    transition: background-color 0.3s ease;
+}
+
+.omg-product-impact:hover .omg-impact-badge {
+    background: #e8f4fd;
+}
+
+/* Print Styles */
+@media print {
+    .omg-certification-badge,
+    .omg-impact-counter,
+    .omg-blockchain-verification {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .omg-blockchain-link {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    .omg-thankyou-impact {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+    }
+}
+
