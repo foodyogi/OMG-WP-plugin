@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: OM Guarantee for WooCommerce - Enhanced Verification (Minimal Fixes)
+ * Plugin Name: OM Guarantee for WooCommerce v3.0.9
  * Plugin URI: https://omguarantee.com
  * Description: Complete OM Guarantee integration with local dashboard, third-party verification, and certification badges. Includes Every.org API integration and WooCommerce automation.
- * Version: 3.0.1
+ * Version: 3.0.9
  * Author: OM Guarantee
  * License: GPL v2 or later
  * Text Domain: omg-woocommerce
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('OMG_WOO_VERSION', '3.0.8');
+define('OMG_WOO_VERSION', '3.0.9');
 define('OMG_WOO_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('OMG_WOO_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
@@ -76,11 +76,11 @@ class OMG_WooCommerce_Enhanced {
     }
     
     public function enqueue_frontend_scripts() {
-        // Add Google Fonts
+        // Add Google Fonts with display=swap for better performance
         wp_enqueue_style('omg-google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap', array(), null);
         
-        // Main styles and scripts - using the fixed version with !important rules to ensure proper display
-        wp_enqueue_style('omg-woo-frontend', OMG_WOO_PLUGIN_URL . 'assets/css/frontend-fixed.css', array('omg-google-fonts'), OMG_WOO_VERSION);
+        // Single optimized styles file
+        wp_enqueue_style('omg-woo-styles', OMG_WOO_PLUGIN_URL . 'assets/css/omg-styles.css', array('omg-google-fonts'), OMG_WOO_VERSION);
         wp_enqueue_script('omg-woo-frontend', OMG_WOO_PLUGIN_URL . 'assets/js/frontend.js', array('jquery'), OMG_WOO_VERSION, true);
         
         // Add the frontend-fix.js script to ensure proper display
@@ -95,8 +95,8 @@ class OMG_WooCommerce_Enhanced {
     
     public function enqueue_admin_scripts($hook) {
         if (strpos($hook, 'omg-guarantee') !== false) {
-            wp_enqueue_style('omg-woo-admin', OMG_WOO_PLUGIN_URL . 'assets/css/admin.css', array(), OMG_WOO_VERSION);
-            wp_enqueue_style('omg-woo-logo-padding-final-fixes', OMG_WOO_PLUGIN_URL . 'assets/css/logo-padding-final-fixes.css', array('omg-woo-admin'), OMG_WOO_VERSION);
+            // Load enhanced admin styling instead of old CSS files
+            wp_enqueue_style('omg-woo-styles', OMG_WOO_PLUGIN_URL . 'assets/css/omg-styles.css', array(), OMG_WOO_VERSION);
             wp_enqueue_script('omg-woo-admin', OMG_WOO_PLUGIN_URL . 'assets/js/admin.js', array('jquery'), OMG_WOO_VERSION, true);
             
             wp_localize_script('omg-woo-admin', 'omg_woo_admin_ajax', array(
@@ -170,7 +170,7 @@ class OMG_WooCommerce_Enhanced {
         <div class="wrap omg-admin-wrap">
             <div class="omg-admin-header">
                 <img src="<?php echo OMG_WOO_PLUGIN_URL; ?>assets/images/newOMGincLogo2022HorizontalWEB.jpg" alt="OM Guarantee" class="omg-admin-logo">
-                <h1>OM Guarantee for WooCommerce - Enhanced Verification</h1>
+                <h1>OM Guarantee for WooCommerce v3.0.9</h1>
                 <p>Complete social impact automation with local dashboard and third-party verification</p>
             </div>
             
@@ -336,78 +336,216 @@ class OMG_WooCommerce_Enhanced {
         <style>
         .omg-admin-wrap {
             max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
+            margin: 30px auto;
+            padding: 0 30px;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         
         .omg-admin-header {
-            background: linear-gradient(135deg, #3A8CCB 0%, #2E7BB8 100%);
+            background: linear-gradient(135deg, #1C7AB8 0%, #00A4A0 100%);
             color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
             text-align: center;
+            box-shadow: 0 15px 40px rgba(28, 122, 184, 0.3);
         }
         
         .omg-admin-logo {
-            max-height: 60px;
-            margin-bottom: 15px;
+            max-height: 70px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
         .omg-admin-header h1 {
             color: white;
-            margin: 0 0 10px 0;
-            font-size: 2.2em;
+            margin: 0 0 15px 0;
+            font-size: 2.4em;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .omg-admin-header p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 0;
         }
         
         .omg-admin-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            grid-gap: 30px;
+            grid-gap: 40px;
         }
         
         .omg-card {
             background: white;
-            border: 2px solid #3A8CCB;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+            border: 3px solid #1C7AB8;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(28, 122, 184, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .omg-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px rgba(28, 122, 184, 0.2);
         }
         
         .omg-card h2, .omg-card h3 {
-            color: #3A8CCB;
+            color: #1C7AB8;
             margin-top: 0;
-            border-bottom: 2px solid #3A8CCB;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid rgba(28, 122, 184, 0.2);
+            padding-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+        
+        .omg-card h2 {
+            font-size: 1.8em;
+        }
+        
+        .omg-card h3 {
+            font-size: 1.4em;
+        }
+        
+        .form-table th {
+            padding: 20px 10px 20px 0;
+            font-weight: 600;
+            color: #333;
+            vertical-align: top;
+        }
+        
+        .form-table td {
+            padding: 20px 10px;
+            vertical-align: top;
+        }
+        
+        .form-table input[type="text"],
+        .form-table input[type="url"],
+        .form-table input[type="number"] {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-table input[type="text"]:focus,
+        .form-table input[type="url"]:focus,
+        .form-table input[type="number"]:focus {
+            border-color: #1C7AB8;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(28, 122, 184, 0.1);
+        }
+        
+        .button {
+            background: #1C7AB8;
+            border-color: #1C7AB8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .button:hover {
+            background: #00A4A0;
+            border-color: #00A4A0;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 164, 160, 0.3);
+        }
+        
+        .button-secondary {
+            background: rgba(28, 122, 184, 0.1);
+            border-color: #1C7AB8;
+            color: #1C7AB8;
+        }
+        
+        .button-secondary:hover {
+            background: #1C7AB8;
+            color: white;
         }
         
         .omg-status-configured {
             color: #28a745;
-            font-weight: bold;
+            font-weight: 600;
+            padding: 4px 8px;
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 4px;
         }
         
         .omg-status-verified {
             color: #28a745;
-            font-weight: bold;
+            font-weight: 600;
+            padding: 4px 8px;
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 4px;
         }
         
         .omg-status-pending {
             color: #ffc107;
-            font-weight: bold;
+            font-weight: 600;
+            padding: 4px 8px;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 4px;
         }
         
         .omg-test-buttons button,
         .omg-quick-actions .button {
             display: block;
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-align: center;
+            padding: 12px 20px;
+        }
+        
+        .omg-status-panel {
+            background: rgba(28, 122, 184, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(28, 122, 184, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        .omg-impact-summary {
+            background: rgba(0, 164, 160, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 164, 160, 0.2);
+        }
+        
+        .omg-impact-summary p {
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+        }
+        
+        .omg-impact-summary p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .description {
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+            font-size: 13px;
         }
         
         @media (max-width: 768px) {
             .omg-admin-content {
                 grid-template-columns: 1fr;
+                grid-gap: 30px;
+            }
+            
+            .omg-admin-wrap {
+                padding: 0 20px;
+                margin: 20px auto;
+            }
+            
+            .omg-card {
+                padding: 25px;
             }
         }
         </style>
@@ -417,48 +555,48 @@ class OMG_WooCommerce_Enhanced {
             <h2>📋 Available Shortcodes</h2>
             <p>Copy and paste these shortcodes into your pages, posts, or widgets to display OM Guarantee content:</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3A8CCB;">
-                    <h4 style="color: #3A8CCB; margin-top: 0;">Impact Dashboard</h4>
-                    <code style="background: #e9ecef; padding: 5px 8px; border-radius: 4px; font-family: monospace;">[omg_impact_dashboard]</code>
-                    <p style="margin: 10px 0 0 0; font-size: 14px; color: #666;">Displays your complete social impact dashboard with metrics and charts.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 25px;">
+                <div style="background: white; padding: 25px; border-radius: 12px; border: 2px solid #1C7AB8; box-shadow: 0 8px 20px rgba(28, 122, 184, 0.15); transition: transform 0.2s ease;">
+                    <h4 style="color: #1C7AB8; margin-top: 0; font-weight: 600; font-size: 16px;">Impact Dashboard</h4>
+                    <code style="background: rgba(28, 122, 184, 0.1); padding: 8px 12px; border-radius: 6px; font-family: monospace; color: #1C7AB8; font-weight: 600;">[omg_impact_dashboard]</code>
+                    <p style="margin: 12px 0 0 0; font-size: 14px; color: #666; line-height: 1.5;">Displays your complete social impact dashboard with metrics and charts.</p>
                 </div>
                 
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3A8CCB;">
-                    <h4 style="color: #3A8CCB; margin-top: 0;">Certification Badge</h4>
-                    <code style="background: #e9ecef; padding: 5px 8px; border-radius: 4px; font-family: monospace;">[omg_certification_badge]</code>
-                    <p style="margin: 10px 0 0 0; font-size: 14px; color: #666;">Shows your OM Guarantee certification badge.</p>
+                <div style="background: white; padding: 25px; border-radius: 12px; border: 2px solid #1C7AB8; box-shadow: 0 8px 20px rgba(28, 122, 184, 0.15); transition: transform 0.2s ease;">
+                    <h4 style="color: #1C7AB8; margin-top: 0; font-weight: 600; font-size: 16px;">Certification Badge</h4>
+                    <code style="background: rgba(28, 122, 184, 0.1); padding: 8px 12px; border-radius: 6px; font-family: monospace; color: #1C7AB8; font-weight: 600;">[omg_certification_badge]</code>
+                    <p style="margin: 12px 0 0 0; font-size: 14px; color: #666; line-height: 1.5;">Shows your OM Guarantee certification badge.</p>
                 </div>
                 
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3A8CCB;">
-                    <h4 style="color: #3A8CCB; margin-top: 0;">Impact Summary</h4>
-                    <code style="background: #e9ecef; padding: 5px 8px; border-radius: 4px; font-family: monospace;">[omg_impact_summary]</code>
-                    <p style="margin: 10px 0 0 0; font-size: 14px; color: #666;">Displays a summary of your total social impact.</p>
+                <div style="background: white; padding: 25px; border-radius: 12px; border: 2px solid #1C7AB8; box-shadow: 0 8px 20px rgba(28, 122, 184, 0.15); transition: transform 0.2s ease;">
+                    <h4 style="color: #1C7AB8; margin-top: 0; font-weight: 600; font-size: 16px;">Impact Summary</h4>
+                    <code style="background: rgba(28, 122, 184, 0.1); padding: 8px 12px; border-radius: 6px; font-family: monospace; color: #1C7AB8; font-weight: 600;">[omg_impact_summary]</code>
+                    <p style="margin: 12px 0 0 0; font-size: 14px; color: #666; line-height: 1.5;">Displays a summary of your total social impact.</p>
                 </div>
                 
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3A8CCB;">
-                    <h4 style="color: #3A8CCB; margin-top: 0;">Donation Counter</h4>
-                    <code style="background: #e9ecef; padding: 5px 8px; border-radius: 4px; font-family: monospace;">[omg_donation_counter]</code>
-                    <p style="margin: 10px 0 0 0; font-size: 14px; color: #666;">Shows total amount donated through your store.</p>
+                <div style="background: white; padding: 25px; border-radius: 12px; border: 2px solid #1C7AB8; box-shadow: 0 8px 20px rgba(28, 122, 184, 0.15); transition: transform 0.2s ease;">
+                    <h4 style="color: #1C7AB8; margin-top: 0; font-weight: 600; font-size: 16px;">Donation Counter</h4>
+                    <code style="background: rgba(28, 122, 184, 0.1); padding: 8px 12px; border-radius: 6px; font-family: monospace; color: #1C7AB8; font-weight: 600;">[omg_donation_counter]</code>
+                    <p style="margin: 12px 0 0 0; font-size: 14px; color: #666; line-height: 1.5;">Shows total amount donated through your store.</p>
                 </div>
                 
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3A8CCB;">
-                    <h4 style="color: #3A8CCB; margin-top: 0;">Charity List</h4>
-                    <code style="background: #e9ecef; padding: 5px 8px; border-radius: 4px; font-family: monospace;">[omg_charity_list]</code>
-                    <p style="margin: 10px 0 0 0; font-size: 14px; color: #666;">Lists the charities you support with donation amounts.</p>
+                <div style="background: white; padding: 25px; border-radius: 12px; border: 2px solid #1C7AB8; box-shadow: 0 8px 20px rgba(28, 122, 184, 0.15); transition: transform 0.2s ease;">
+                    <h4 style="color: #1C7AB8; margin-top: 0; font-weight: 600; font-size: 16px;">Charity List</h4>
+                    <code style="background: rgba(28, 122, 184, 0.1); padding: 8px 12px; border-radius: 6px; font-family: monospace; color: #1C7AB8; font-weight: 600;">[omg_charity_list]</code>
+                    <p style="margin: 12px 0 0 0; font-size: 14px; color: #666; line-height: 1.5;">Lists the charities you support with donation amounts.</p>
                 </div>
             </div>
             
-            <div style="background: #e7f3ff; padding: 20px; border-radius: 8px; margin-top: 20px; border: 1px solid #3A8CCB;">
-                <h4 style="color: #3A8CCB; margin-top: 0;">💡 How to Use Shortcodes:</h4>
-                <ol style="margin: 0; padding-left: 20px;">
+            <div style="background: rgba(28, 122, 184, 0.05); padding: 30px; border-radius: 12px; margin-top: 30px; border: 2px solid rgba(28, 122, 184, 0.2); box-shadow: 0 8px 20px rgba(28, 122, 184, 0.1);">
+                <h4 style="color: #1C7AB8; margin-top: 0; font-weight: 600; font-size: 18px;">💡 How to Use Shortcodes:</h4>
+                <ol style="margin: 0; padding-left: 25px; line-height: 1.8;">
                     <li><strong>Copy</strong> the shortcode you want to use</li>
                     <li><strong>Edit</strong> the page, post, or widget where you want it to appear</li>
                     <li><strong>Paste</strong> the shortcode into the content area</li>
                     <li><strong>Save/Update</strong> the page</li>
                     <li><strong>View</strong> your page to see the OM Guarantee content</li>
                 </ol>
-                <p style="margin: 15px 0 0 0; font-style: italic; color: #666;">
+                <p style="margin: 20px 0 0 0; font-style: italic; color: #666; padding: 15px; background: rgba(0, 164, 160, 0.05); border-radius: 8px; border-left: 4px solid #00A4A0;">
                     <strong>Tip:</strong> You can use these shortcodes in pages, posts, widgets, and even some theme areas that support shortcodes.
                 </p>
             </div>
@@ -549,32 +687,94 @@ class OMG_WooCommerce_Enhanced {
         <style>
         .omg-registration-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            grid-gap: 20px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 25px;
+            margin: 30px 0;
         }
         
         .omg-info-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #3A8CCB;
+            background: rgba(28, 122, 184, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid rgba(28, 122, 184, 0.25);
+            box-shadow: 0 8px 20px rgba(28, 122, 184, 0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .omg-info-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(28, 122, 184, 0.15);
         }
         
         .omg-info-section h4 {
-            color: #3A8CCB;
+            color: #1C7AB8;
             margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: -0.3px;
+        }
+        
+        .omg-info-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .omg-info-section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #555;
         }
         
         .omg-registration-actions {
             text-align: center;
-            margin: 30px 0;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 164, 160, 0.05);
+            border-radius: 12px;
+            border: 2px solid rgba(0, 164, 160, 0.2);
         }
         
         .button-hero {
-            font-size: 16px;
-            padding: 15px 30px;
+            font-size: 18px;
+            padding: 18px 35px;
             height: auto;
+            background: #1C7AB8;
+            border-color: #1C7AB8;
+            color: white;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(28, 122, 184, 0.3);
+        }
+        
+        .button-hero:hover {
+            background: #00A4A0;
+            border-color: #00A4A0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 164, 160, 0.4);
+        }
+        
+        .omg-registration-actions p {
+            margin: 20px 0 0 0;
+            font-style: italic;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .omg-card ol {
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+        
+        .omg-card ol li {
+            margin-bottom: 12px;
+            color: #555;
+        }
+        
+        .omg-card ol li strong {
+            color: #1C7AB8;
+            font-weight: 600;
         }
         </style>
         <?php
@@ -593,7 +793,8 @@ class OMG_WooCommerce_Enhanced {
                 <p>Track and verify your social impact</p>
             </div>
             
-            <div class="omg-impact-dashboard">
+            <div class="omg-card">
+                <h2>📊 Impact Summary</h2>
                 <div class="omg-summary-cards">
                     <div class="omg-summary-card">
                         <div class="omg-summary-number">$<?php echo number_format($total_donated, 2); ?></div>
@@ -607,11 +808,14 @@ class OMG_WooCommerce_Enhanced {
                     
                     <div class="omg-summary-card">
                         <div class="omg-summary-number"><?php echo number_format($blockchain_transactions); ?></div>
-                        <div class="omg-summary-label">Blockchain Transactions</div>
+                        <div class="omg-summary-label">Blockchain Verified</div>
                     </div>
                 </div>
-                
-                <div class="omg-report-actions">
+            </div>
+            
+            <div class="omg-card">
+                <h2>🎯 Quick Actions</h2>
+                <div class="omg-quick-actions">
                     <button type="button" id="generate-detailed-report" class="button button-primary">📄 Generate Detailed Report</button>
                     <button type="button" id="export-for-omg" class="button button-secondary">📤 Export for OM Guarantee</button>
                     <button type="button" id="verify-blockchain" class="button button-secondary">🔗 Verify on Blockchain</button>
@@ -620,47 +824,56 @@ class OMG_WooCommerce_Enhanced {
         </div>
         
         <style>
-        .omg-impact-dashboard {
-            background: white;
-            border: 2px solid #3A8CCB;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.15);
-        }
-        
         .omg-summary-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
         }
         
         .omg-summary-card {
-            background: linear-gradient(135deg, #3A8CCB 0%, #2E7BB8 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 8px 24px rgba(58, 140, 203, 0.3);
+            padding: 25px;
+            background: rgba(28, 122, 184, 0.05);
+            border-radius: 12px;
+            border: 2px solid rgba(28, 122, 184, 0.25);
+            box-shadow: 0 8px 20px rgba(28, 122, 184, 0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .omg-summary-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(28, 122, 184, 0.15);
         }
         
         .omg-summary-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1C7AB8;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
         
         .omg-summary-label {
-            font-size: 1.1em;
-            opacity: 0.9;
+            font-size: 14px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            font-weight: 500;
         }
         
-        .omg-report-actions {
-            text-align: center;
+        .omg-quick-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         
-        .omg-report-actions .button {
-            margin: 0 10px;
+        .omg-quick-actions .button {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: 600;
         }
         </style>
         <?php
@@ -683,75 +896,93 @@ class OMG_WooCommerce_Enhanced {
         ?>
         <div class="omg-impact-dashboard-compact" style="
             background: white;
-            border: 2px solid #3A8CCB;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px auto;
+            border: 3px solid #1C7AB8;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
             max-width: 600px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(28, 122, 184, 0.2);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         ">
             <!-- Header -->
-            <div style="text-align: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0;">
-                <h3 style="margin: 0; color: #3A8CCB; font-size: 18px;">Social Impact Dashboard</h3>
-                <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;"><?php echo esc_html($business_name); ?></p>
+            <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.06);">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+                    <img src="<?php echo OMG_WOO_PLUGIN_URL; ?>assets/images/newOMGincLogo2022HorizontalWEB.jpg" alt="OM Guarantee" style="height: 40px; width: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </div>
+                <h3 style="margin: 0; color: #1C7AB8; font-size: 22px; font-weight: 600; letter-spacing: -0.5px;">Social Impact Dashboard</h3>
+                <p style="margin: 8px 0 0 0; color: #666; font-size: 15px; font-weight: 400;"><?php echo esc_html($business_name); ?></p>
             </div>
 
             <!-- Summary Row -->
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px;">
-                <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #3A8CCB;">
-                    <div style="font-size: 24px; font-weight: bold; color: #3A8CCB; margin-bottom: 5px;">$<?php echo number_format($total_donated); ?></div>
-                    <div style="font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">Total Donated</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 2px solid #ddd; border-bottom: 4px solid #1C7AB8; box-shadow: 0 6px 15px rgba(28, 122, 184, 0.15); transition: transform 0.2s ease;">
+                    <div style="font-size: 28px; font-weight: 700; color: #1C7AB8; margin-bottom: 8px;">$<?php echo number_format($total_donated); ?></div>
+                    <div style="font-size: 13px; color: #555; text-transform: uppercase; letter-spacing: 0.7px; font-weight: 500;">Total Donated</div>
                 </div>
-                <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #28a745;">
-                    <div style="font-size: 24px; font-weight: bold; color: #28a745; margin-bottom: 5px;"><?php echo number_format($total_orders); ?></div>
-                    <div style="font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">Impact Orders</div>
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 2px solid #ddd; border-bottom: 4px solid #00A4A0; box-shadow: 0 6px 15px rgba(0, 164, 160, 0.15); transition: transform 0.2s ease;">
+                    <div style="font-size: 28px; font-weight: 700; color: #00A4A0; margin-bottom: 8px;"><?php echo number_format($total_orders); ?></div>
+                    <div style="font-size: 13px; color: #555; text-transform: uppercase; letter-spacing: 0.7px; font-weight: 500;">Impact Orders</div>
                 </div>
-                <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #17a2b8;">
-                    <div style="font-size: 24px; font-weight: bold; color: #17a2b8; margin-bottom: 5px;"><?php echo number_format($blockchain_transactions); ?></div>
-                    <div style="font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px;">Blockchain Verified</div>
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 2px solid #ddd; border-bottom: 4px solid #1C7AB8; box-shadow: 0 6px 15px rgba(28, 122, 184, 0.15); transition: transform 0.2s ease;">
+                    <div style="font-size: 28px; font-weight: 700; color: #1C7AB8; margin-bottom: 8px;"><?php echo number_format($blockchain_transactions); ?></div>
+                    <div style="font-size: 13px; color: #555; text-transform: uppercase; letter-spacing: 0.7px; font-weight: 500;">Blockchain Verified</div>
                 </div>
             </div>
 
             <!-- Top Charity -->
             <?php if (!empty($default_charity)): ?>
-            <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; border-left: 4px solid #3A8CCB;">
-                <h4 style="margin: 0 0 8px 0; color: #3A8CCB; font-size: 14px;">Top Supported Charity</h4>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 18px;">🌍</span>
-                    <div>
-                        <p style="margin: 0; font-weight: 600; color: #333; font-size: 14px;"><?php echo esc_html($default_charity); ?></p>
-                        <p style="margin: 0; color: #666; font-size: 12px;">$<?php echo number_format($total_donated); ?> donated</p>
+            <div style="background: rgba(28, 122, 184, 0.05); padding: 24px; border-radius: 12px; border: 2px solid rgba(28, 122, 184, 0.25); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); margin-bottom: 30px;">
+                <h4 style="margin: 0 0 12px 0; color: #1C7AB8; font-size: 16px; font-weight: 600; text-align: left;">Top Supported Charity</h4>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 2px solid rgba(28, 122, 184, 0.3); box-shadow: 0 3px 8px rgba(28, 122, 184, 0.15); overflow: hidden; background: white;">
+                        <span style="font-size: 22px;">🌍</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <p style="margin: 0 0 4px 0; font-weight: 600; color: #333; font-size: 16px;"><?php echo esc_html($default_charity); ?></p>
+                        <p style="margin: 0; color: #1C7AB8; font-size: 14px; font-weight: 500;">$<?php echo number_format($total_donated); ?> donated</p>
                     </div>
                 </div>
             </div>
             <?php endif; ?>
 
             <!-- Verification Links -->
-            <div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
-                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <div style="text-align: center; margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(0, 0, 0, 0.05);">
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                     <a href="#" style="
-                        color: #3A8CCB; 
+                        color: #1C7AB8; 
                         text-decoration: none; 
-                        font-size: 12px; 
-                        padding: 6px 12px; 
-                        border: 1px solid #3A8CCB; 
-                        border-radius: 4px;
+                        font-size: 14px; 
+                        font-weight: 600;
+                        padding: 10px 16px; 
+                        border: 2px solid #1C7AB8; 
+                        border-radius: 8px;
+                        background-color: rgba(28, 122, 184, 0.05);
                         transition: all 0.3s ease;
-                    " onmouseover="this.style.background='#3A8CCB'; this.style.color='white';" 
-                       onmouseout="this.style.background='transparent'; this.style.color='#3A8CCB';">
-                        🔗 Blockchain Verification
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                    " onmouseover="this.style.background='#1C7AB8'; this.style.color='white'; this.style.boxShadow='0 4px 10px rgba(28,122,184,0.3)';" 
+                       onmouseout="this.style.background='rgba(28, 122, 184, 0.05)'; this.style.color='#1C7AB8'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.05)';">
+                        🔗 <span style="position: relative; top: 1px;">Blockchain Verification</span>
                     </a>
                     <a href="#" style="
-                        color: #28a745; 
+                        color: #00A4A0; 
                         text-decoration: none; 
-                        font-size: 12px; 
-                        padding: 6px 12px; 
-                        border: 1px solid #28a745; 
-                        border-radius: 4px;
+                        font-size: 14px; 
+                        font-weight: 600;
+                        padding: 10px 16px; 
+                        border: 2px solid #00A4A0; 
+                        border-radius: 8px;
+                        background-color: rgba(0, 164, 160, 0.05);
                         transition: all 0.3s ease;
-                    " onmouseover="this.style.background='#28a745'; this.style.color='white';" 
-                       onmouseout="this.style.background='transparent'; this.style.color='#28a745';">
-                        📈 Donation Tracker
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                    " onmouseover="this.style.background='#00A4A0'; this.style.color='white'; this.style.boxShadow='0 4px 10px rgba(0,164,160,0.3)';" 
+                       onmouseout="this.style.background='rgba(0, 164, 160, 0.05)'; this.style.color='#00A4A0'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.05)';">
+                        📈 <span style="position: relative; top: 1px;">Donation Tracker</span>
                     </a>
                 </div>
             </div>
@@ -772,22 +1003,30 @@ class OMG_WooCommerce_Enhanced {
         ob_start();
         ?>
         <div class="omg-impact-summary" style="
-            background: #f8f9fa;
-            border-left: 4px solid #3A8CCB;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
+            background: white;
+            border: 3px solid #1C7AB8;
+            padding: 25px;
+            margin: 40px auto;
+            border-radius: 12px;
             max-width: 400px;
+            box-shadow: 0 15px 40px rgba(28, 122, 184, 0.25);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            box-sizing: border-box;
         ">
-            <h4 style="margin: 0 0 10px 0; color: #3A8CCB; font-size: 16px;">Our Social Impact</h4>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <p style="margin: 0; font-size: 14px; color: #666;">Total Donated:</p>
-                    <p style="margin: 0; font-size: 20px; font-weight: bold; color: #3A8CCB;">$<?php echo number_format($total_donated); ?></p>
+            <h4 style="margin: 0 0 20px 0; color: #1C7AB8; font-size: 18px; font-weight: 600; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);">Our Social Impact</h4>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+                <div style="background: white; padding: 20px; border-radius: 10px; flex: 1; margin-right: 15px; box-shadow: 0 5px 15px rgba(28, 122, 184, 0.15); border: 2px solid rgba(28, 122, 184, 0.3); border-bottom: 4px solid #1C7AB8; text-align: center;">
+                    <p style="margin: 0 0 5px 0; font-size: 14px; color: #666; font-weight: 500;">Total Donated:</p>
+                    <p style="margin: 0; font-size: 24px; font-weight: 700; color: #1C7AB8;">$<?php echo number_format($total_donated); ?></p>
                 </div>
-                <div style="text-align: right;">
-                    <p style="margin: 0; font-size: 14px; color: #666;">Impact Orders:</p>
-                    <p style="margin: 0; font-size: 20px; font-weight: bold; color: #28a745;"><?php echo number_format($total_orders); ?></p>
+                <div style="background: white; padding: 20px; border-radius: 10px; flex: 1; box-shadow: 0 5px 15px rgba(0, 164, 160, 0.15); border: 2px solid rgba(0, 164, 160, 0.3); border-bottom: 4px solid #00A4A0; text-align: center;">
+                    <p style="margin: 0 0 5px 0; font-size: 14px; color: #666; font-weight: 500;">Impact Orders:</p>
+                    <p style="margin: 0; font-size: 24px; font-weight: 700; color: #00A4A0;"><?php echo number_format($total_orders); ?></p>
                 </div>
             </div>
         </div>
@@ -802,19 +1041,27 @@ class OMG_WooCommerce_Enhanced {
         ?>
         <div class="omg-donation-counter" style="
             text-align: center;
-            padding: 15px;
-            background: linear-gradient(135deg, #3A8CCB, #28a745);
-            color: white;
-            border-radius: 8px;
-            margin: 15px 0;
+            padding: 25px;
+            background: white;
+            color: #333;
+            border-radius: 12px;
+            margin: 40px auto;
             max-width: 300px;
+            box-shadow: 0 15px 40px rgba(28, 122, 184, 0.25);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #1C7AB8;
+            display: block;
             margin-left: auto;
             margin-right: auto;
+            width: 100%;
+            box-sizing: border-box;
         ">
-            <div style="font-size: 28px; font-weight: bold; margin-bottom: 5px;">
+            <div style="font-size: 36px; font-weight: 700; margin-bottom: 10px; color: #1C7AB8;">
                 $<?php echo number_format($total_donated); ?>
             </div>
-            <div style="font-size: 14px; opacity: 0.9;">
+            <div style="font-size: 15px; letter-spacing: 0.5px; font-weight: 500; color: #666; text-transform: uppercase;">
                 Total Donated to Charity
             </div>
         </div>
@@ -830,23 +1077,34 @@ class OMG_WooCommerce_Enhanced {
         ?>
         <div class="omg-charity-list" style="
             background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
+            border: 3px solid #1C7AB8;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
             max-width: 400px;
+            box-shadow: 0 15px 40px rgba(28, 122, 184, 0.2);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            box-sizing: border-box;
         ">
-            <h4 style="margin: 0 0 15px 0; color: #3A8CCB; font-size: 16px;">Supported Charities</h4>
+            <h4 style="margin: 0 0 20px 0; color: #1C7AB8; font-size: 18px; font-weight: 600; text-align: center;">Supported Charities</h4>
             <?php if ($total_donated > 0): ?>
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 16px;">🌍</span>
-                    <span style="font-weight: 600; color: #333;"><?php echo esc_html($default_charity); ?></span>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(28, 122, 184, 0.05); border-radius: 10px; border: 2px solid rgba(28, 122, 184, 0.25); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 2px solid rgba(28, 122, 184, 0.3); box-shadow: 0 2px 5px rgba(28, 122, 184, 0.15); overflow: hidden; background: white;">
+                        <span style="font-size: 18px;">🌍</span>
+                    </div>
+                    <span style="font-weight: 600; color: #333; font-size: 15px;"><?php echo esc_html($default_charity); ?></span>
                 </div>
-                <span style="color: #3A8CCB; font-weight: bold;">$<?php echo number_format($total_donated); ?></span>
+                <span style="color: #1C7AB8; font-weight: 700; font-size: 16px;">$<?php echo number_format($total_donated); ?></span>
             </div>
             <?php else: ?>
-            <p style="margin: 0; color: #666; font-style: italic;">No donations yet. Start making an impact with your first purchase!</p>
+            <div style="background: rgba(0, 0, 0, 0.02); padding: 20px; border-radius: 10px; border: 2px dashed rgba(0, 0, 0, 0.1); text-align: center;">
+                <p style="margin: 0; color: #666; font-style: italic; font-size: 14px;">No donations yet. Start making an impact with your first purchase!</p>
+            </div>
             <?php endif; ?>
         </div>
         <?php
@@ -870,46 +1128,61 @@ class OMG_WooCommerce_Enhanced {
         ob_start();
         ?>
         <div class="omg-certification-badge-compact" style="
-            background: #f8f9fa;
-            border: 2px solid #3A8CCB;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px auto;
+            background: white;
+            border: 3px solid #1C7AB8;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
             max-width: 400px;
             text-align: left;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(28, 122, 184, 0.2);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         ">
-            <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="display: flex; align-items: center; gap: 20px;">
                 <img src="<?php echo OMG_WOO_PLUGIN_URL; ?>assets/images/OMGcertificate2022.png" 
                      alt="OM Guarantee Certification" 
-                     style="width: 60px; height: 60px; object-fit: contain; flex-shrink: 0;">
+                     style="width: 160px; height: 160px; object-fit: contain; flex-shrink: 0; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
                 <div style="flex: 1;">
-                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #333; font-size: 14px;">
+                    <p style="margin: 0 0 10px 0; font-weight: 700; color: #1C7AB8; font-size: 16px; letter-spacing: -0.3px;">
                         <strong><?php echo esc_html($business_name); ?> is OM Guarantee certified.</strong>
                     </p>
-                    <p style="margin: 0 0 12px 0; color: #666; font-size: 13px;">
+                    <p style="margin: 0 0 15px 0; color: #666; font-size: 14px; font-weight: 400;">
                         We have made the following certified social impact:
                     </p>
                     <?php if ($children_fed > 0): ?>
                     <div style="
                         display: flex; 
                         align-items: center; 
-                        gap: 8px; 
-                        margin: 8px 0;
-                        padding: 8px 12px;
-                        background: #e7f3ff;
-                        border-radius: 6px;
-                        border-left: 3px solid #3A8CCB;
+                        gap: 10px; 
+                        margin: 12px 0;
+                        padding: 15px;
+                        background: rgba(28, 122, 184, 0.05);
+                        border-radius: 10px;
+                        border: 2px solid rgba(28, 122, 184, 0.25);
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
                     ">
-                        <span style="font-size: 16px;">🍽️</span>
-                        <span style="font-weight: 600; color: #3A8CCB; font-size: 13px;">
+                        <span style="font-size: 18px;">🍽️</span>
+                        <span style="font-weight: 600; color: #1C7AB8; font-size: 14px;">
                             Fed <?php echo number_format($children_fed); ?> needy children
                         </span>
                     </div>
                     <?php endif; ?>
                     <?php if (!empty($omg_profile_url)): ?>
                         <a href="<?php echo esc_url($omg_profile_url); ?>" target="_blank" 
-                           style="color: #3A8CCB; text-decoration: none; font-weight: 600; font-size: 12px;">
+                           style="
+                               color: #1C7AB8; 
+                               text-decoration: none; 
+                               font-weight: 600; 
+                               font-size: 13px;
+                               padding: 8px 16px;
+                               border: 2px solid #1C7AB8;
+                               border-radius: 6px;
+                               background-color: rgba(28, 122, 184, 0.05);
+                               transition: all 0.3s ease;
+                               display: inline-block;
+                               margin-top: 10px;
+                           " onmouseover="this.style.background='#1C7AB8'; this.style.color='white';" 
+                              onmouseout="this.style.background='rgba(28, 122, 184, 0.05)'; this.style.color='#1C7AB8';">
                             View our verified impact →
                         </a>
                     <?php endif; ?>

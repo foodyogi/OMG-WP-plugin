@@ -1,0 +1,546 @@
+/* OM Guarantee for WooCommerce v3.0.9 - Optimized Styles */
+
+/* ===== FRONTEND STYLES ===== */
+.omg-impact-dashboard-compact,
+.omg-impact-summary,
+.omg-donation-counter,
+.omg-charity-list,
+.omg-certification-badge-compact {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+/* Impact Dashboard */
+.omg-impact-dashboard-compact {
+    background: white !important;
+    border: 3px solid #1C7AB8 !important;
+    border-radius: 16px !important;
+    padding: 30px !important;
+    margin: 40px auto !important;
+    max-width: 600px !important;
+    box-shadow: 0 15px 40px rgba(28, 122, 184, 0.2) !important;
+}
+
+.omg-impact-dashboard-compact h3 {
+    margin: 0 !important;
+    color: #1C7AB8 !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+}
+
+.omg-impact-dashboard-compact p {
+    margin: 8px 0 0 0 !important;
+    color: #666 !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+}
+
+/* Impact Summary */
+.omg-impact-summary {
+    background: white !important;
+    border: 3px solid #1C7AB8 !important;
+    padding: 25px !important;
+    margin: 40px auto !important;
+    border-radius: 12px !important;
+    max-width: 400px !important;
+    box-shadow: 0 15px 40px rgba(28, 122, 184, 0.25) !important;
+    text-align: center !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+}
+
+.omg-impact-summary h4 {
+    margin: 0 0 20px 0 !important;
+    color: #1C7AB8 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+/* Donation Counter */
+.omg-donation-counter {
+    text-align: center !important;
+    padding: 25px !important;
+    background: white !important;
+    color: #333 !important;
+    border-radius: 12px !important;
+    margin: 40px auto !important;
+    max-width: 300px !important;
+    box-shadow: 0 15px 40px rgba(28, 122, 184, 0.25) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border: 3px solid #1C7AB8 !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+}
+
+.omg-donation-counter .amount {
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    margin-bottom: 10px !important;
+    color: #1C7AB8 !important;
+}
+
+.omg-donation-counter .label {
+    font-size: 15px !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 500 !important;
+    color: #666 !important;
+    text-transform: uppercase !important;
+}
+
+/* Charity List */
+.omg-charity-list {
+    background: white !important;
+    border: 3px solid #1C7AB8 !important;
+    border-radius: 16px !important;
+    padding: 30px !important;
+    margin: 40px auto !important;
+    max-width: 400px !important;
+    box-shadow: 0 15px 40px rgba(28, 122, 184, 0.2) !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+}
+
+.omg-charity-list h4 {
+    margin: 0 0 20px 0 !important;
+    color: #1C7AB8 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+}
+
+/* Certification Badge */
+.omg-certification-badge-compact {
+    background: white !important;
+    border: 3px solid #1C7AB8 !important;
+    border-radius: 16px !important;
+    padding: 30px !important;
+    margin: 40px auto !important;
+    max-width: 400px !important;
+    text-align: left !important;
+    box-shadow: 0 15px 40px rgba(28, 122, 184, 0.2) !important;
+}
+
+.omg-certification-badge-compact .certification-logo {
+    width: 160px !important;
+    height: 160px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+}
+
+.omg-certification-badge-compact .certification-title {
+    margin: 0 0 10px 0 !important;
+    font-weight: 700 !important;
+    color: #1C7AB8 !important;
+    font-size: 16px !important;
+    letter-spacing: -0.3px !important;
+}
+
+.omg-certification-badge-compact .certification-description {
+    margin: 0 0 15px 0 !important;
+    color: #666 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+.omg-certification-badge-compact .impact-metric {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 12px 0 !important;
+    padding: 15px !important;
+    background: rgba(28, 122, 184, 0.05) !important;
+    border-radius: 10px !important;
+    border: 2px solid rgba(28, 122, 184, 0.25) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.omg-certification-badge-compact .verification-link {
+    color: #1C7AB8 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 8px 16px !important;
+    border: 2px solid #1C7AB8 !important;
+    border-radius: 6px !important;
+    background-color: rgba(28, 122, 184, 0.05) !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    margin-top: 10px !important;
+}
+
+.omg-certification-badge-compact .verification-link:hover {
+    background: #1C7AB8 !important;
+    color: white !important;
+}
+
+/* ===== ADMIN STYLES ===== */
+.omg-admin-wrap {
+    max-width: 1200px !important;
+    margin: 30px auto !important;
+    padding: 0 30px !important;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.omg-admin-header {
+    background: linear-gradient(135deg, #1C7AB8 0%, #00A4A0 100%) !important;
+    color: white !important;
+    padding: 40px !important;
+    border-radius: 16px !important;
+    margin-bottom: 40px !important;
+    text-align: center !important;
+    box-shadow: 0 15px 40px rgba(28, 122, 184, 0.3) !important;
+}
+
+.omg-admin-logo {
+    max-height: 70px !important;
+    margin-bottom: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+
+.omg-admin-header h1 {
+    color: white !important;
+    margin: 0 0 15px 0 !important;
+    font-size: 2.4em !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.5px !important;
+}
+
+.omg-admin-header p {
+    font-size: 16px !important;
+    opacity: 0.9 !important;
+    margin: 0 !important;
+}
+
+.omg-admin-content {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr !important;
+    grid-gap: 40px !important;
+}
+
+.omg-card {
+    background: white !important;
+    border: 3px solid #1C7AB8 !important;
+    border-radius: 16px !important;
+    padding: 35px !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 15px 40px rgba(28, 122, 184, 0.15) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.omg-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 20px 50px rgba(28, 122, 184, 0.2) !important;
+}
+
+.omg-card h2, .omg-card h3 {
+    color: #1C7AB8 !important;
+    margin-top: 0 !important;
+    margin-bottom: 25px !important;
+    border-bottom: 2px solid rgba(28, 122, 184, 0.2) !important;
+    padding-bottom: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.3px !important;
+}
+
+.omg-card h2 {
+    font-size: 1.8em !important;
+}
+
+.omg-card h3 {
+    font-size: 1.4em !important;
+}
+
+/* Form Styling */
+.form-table th {
+    padding: 20px 10px 20px 0 !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    vertical-align: top !important;
+}
+
+.form-table td {
+    padding: 20px 10px !important;
+    vertical-align: top !important;
+}
+
+.form-table input[type="text"],
+.form-table input[type="url"],
+.form-table input[type="number"] {
+    border: 2px solid #ddd !important;
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    font-size: 14px !important;
+    transition: border-color 0.3s ease !important;
+}
+
+.form-table input[type="text"]:focus,
+.form-table input[type="url"]:focus,
+.form-table input[type="number"]:focus {
+    border-color: #1C7AB8 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(28, 122, 184, 0.1) !important;
+}
+
+/* Buttons */
+.button {
+    background: #1C7AB8 !important;
+    border-color: #1C7AB8 !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.button:hover {
+    background: #00A4A0 !important;
+    border-color: #00A4A0 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 10px rgba(0, 164, 160, 0.3) !important;
+}
+
+.button-secondary {
+    background: rgba(28, 122, 184, 0.1) !important;
+    border-color: #1C7AB8 !important;
+    color: #1C7AB8 !important;
+}
+
+.button-secondary:hover {
+    background: #1C7AB8 !important;
+    color: white !important;
+}
+
+/* Status Indicators */
+.omg-status-configured,
+.omg-status-verified {
+    color: #28a745 !important;
+    font-weight: 600 !important;
+    padding: 4px 8px !important;
+    background: rgba(40, 167, 69, 0.1) !important;
+    border-radius: 4px !important;
+}
+
+.omg-status-pending {
+    color: #ffc107 !important;
+    font-weight: 600 !important;
+    padding: 4px 8px !important;
+    background: rgba(255, 193, 7, 0.1) !important;
+    border-radius: 4px !important;
+}
+
+/* Action Buttons */
+.omg-test-buttons button,
+.omg-quick-actions .button {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+    padding: 12px 20px !important;
+}
+
+/* Status Panels */
+.omg-status-panel {
+    background: rgba(28, 122, 184, 0.05) !important;
+    padding: 20px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(28, 122, 184, 0.2) !important;
+    margin-bottom: 20px !important;
+}
+
+.omg-impact-summary {
+    background: rgba(0, 164, 160, 0.05) !important;
+    padding: 20px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(0, 164, 160, 0.2) !important;
+}
+
+.omg-impact-summary p {
+    margin: 0 0 15px 0 !important;
+    line-height: 1.5 !important;
+}
+
+.omg-impact-summary p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Registration Page */
+.omg-registration-info {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    grid-gap: 25px !important;
+    margin: 30px 0 !important;
+}
+
+.omg-info-section {
+    background: rgba(28, 122, 184, 0.05) !important;
+    padding: 25px !important;
+    border-radius: 12px !important;
+    border: 2px solid rgba(28, 122, 184, 0.25) !important;
+    box-shadow: 0 8px 20px rgba(28, 122, 184, 0.1) !important;
+    transition: transform 0.2s ease !important;
+}
+
+.omg-info-section:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 25px rgba(28, 122, 184, 0.15) !important;
+}
+
+.omg-info-section h4 {
+    color: #1C7AB8 !important;
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    letter-spacing: -0.3px !important;
+}
+
+.omg-info-section ul {
+    margin: 0 !important;
+    padding-left: 20px !important;
+}
+
+.omg-info-section li {
+    margin-bottom: 8px !important;
+    line-height: 1.5 !important;
+    color: #555 !important;
+}
+
+.omg-registration-actions {
+    text-align: center !important;
+    margin: 40px 0 !important;
+    padding: 30px !important;
+    background: rgba(0, 164, 160, 0.05) !important;
+    border-radius: 12px !important;
+    border: 2px solid rgba(0, 164, 160, 0.2) !important;
+}
+
+.button-hero {
+    font-size: 18px !important;
+    padding: 18px 35px !important;
+    height: auto !important;
+    background: #1C7AB8 !important;
+    border-color: #1C7AB8 !important;
+    color: white !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(28, 122, 184, 0.3) !important;
+}
+
+.button-hero:hover {
+    background: #00A4A0 !important;
+    border-color: #00A4A0 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 15px rgba(0, 164, 160, 0.4) !important;
+}
+
+.omg-registration-actions p {
+    margin: 20px 0 0 0 !important;
+    font-style: italic !important;
+    color: #666 !important;
+    font-size: 14px !important;
+}
+
+/* Report Page */
+.omg-summary-cards {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 25px !important;
+    margin: 20px 0 !important;
+}
+
+.omg-summary-card {
+    text-align: center !important;
+    padding: 25px !important;
+    background: rgba(28, 122, 184, 0.05) !important;
+    border-radius: 12px !important;
+    border: 2px solid rgba(28, 122, 184, 0.25) !important;
+    box-shadow: 0 8px 20px rgba(28, 122, 184, 0.1) !important;
+    transition: transform 0.2s ease !important;
+}
+
+.omg-summary-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 25px rgba(28, 122, 184, 0.15) !important;
+}
+
+.omg-summary-number {
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    color: #1C7AB8 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.5px !important;
+}
+
+.omg-summary-label {
+    font-size: 14px !important;
+    color: #555 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.7px !important;
+    font-weight: 500 !important;
+}
+
+.omg-quick-actions {
+    display: flex !important;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+}
+
+.omg-quick-actions .button {
+    flex: 1 !important;
+    min-width: 200px !important;
+    padding: 15px 25px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+/* Descriptions */
+.description {
+    color: #666 !important;
+    font-style: italic !important;
+    margin-top: 8px !important;
+    font-size: 13px !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .omg-admin-content {
+        grid-template-columns: 1fr !important;
+        grid-gap: 30px !important;
+    }
+    
+    .omg-admin-wrap {
+        padding: 0 20px !important;
+        margin: 20px auto !important;
+    }
+    
+    .omg-card {
+        padding: 25px !important;
+    }
+    
+    .omg-quick-actions {
+        flex-direction: column !important;
+    }
+    
+    .omg-quick-actions .button {
+        min-width: auto !important;
+    }
+} 
