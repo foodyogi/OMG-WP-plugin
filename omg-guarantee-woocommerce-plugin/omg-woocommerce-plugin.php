@@ -146,10 +146,21 @@ class OMG_WooCommerce_Enhanced {
     }
     
     public function admin_page() {
-        if (isset($_POST['submit'])) {
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_die(__('You do not have sufficient permissions to access this page.'));
+        }
+        
+        if (isset($_POST['submit']) && isset($_POST['omg_woo_nonce']) && wp_verify_nonce($_POST['omg_woo_nonce'], 'omg_woo_settings')) {
+            // Validate and sanitize inputs
+            $impact_percentage = floatval($_POST['omg_woo_impact_percentage']);
+            if ($impact_percentage < 0 || $impact_percentage > 100) {
+                $impact_percentage = 1.5; // Default value
+            }
+            
             update_option('omg_woo_enabled', isset($_POST['omg_woo_enabled']));
             update_option('omg_woo_global_impact', isset($_POST['omg_woo_global_impact']));
-            update_option('omg_woo_impact_percentage', sanitize_text_field($_POST['omg_woo_impact_percentage']));
+            update_option('omg_woo_impact_percentage', $impact_percentage);
             update_option('omg_woo_default_charity', sanitize_text_field($_POST['omg_woo_default_charity']));
             update_option('omg_woo_every_org_api_key', sanitize_text_field($_POST['omg_woo_every_org_api_key']));
             update_option('omg_woo_business_name', sanitize_text_field($_POST['omg_woo_business_name']));
@@ -177,6 +188,7 @@ class OMG_WooCommerce_Enhanced {
             <div class="omg-admin-content">
                 <div class="omg-admin-main">
                     <form method="post" action="">
+                        <?php wp_nonce_field('omg_woo_settings', 'omg_woo_nonce'); ?>
                         <div class="omg-card">
                             <h2>🎯 General Settings</h2>
                             
@@ -236,9 +248,12 @@ class OMG_WooCommerce_Enhanced {
                                 <tr>
                                     <th scope="row">Every.org API Key</th>
                                     <td>
-                                        <input type="text" name="omg_woo_every_org_api_key" value="<?php echo esc_attr($api_key); ?>" class="regular-text">
+                                        <input type="password" name="omg_woo_every_org_api_key" value="<?php echo esc_attr($api_key); ?>" class="regular-text">
                                         <button type="button" id="test-api" class="button">Test API Connection</button>
                                         <p class="description">Get your API key from <a href="https://www.every.org/charity-api" target="_blank">Every.org</a></p>
+                                        <?php if (!empty($api_key)): ?>
+                                            <p class="description"><small>✅ API key configured (hidden for security)</small></p>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             </table>
@@ -1263,6 +1278,11 @@ class OMG_WooCommerce_Enhanced {
     
     // AJAX handlers
     public function ajax_search_charities() {
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Insufficient permissions');
+        }
+        
         check_ajax_referer('omg_woo_admin_nonce', 'nonce');
         
         $search_term = sanitize_text_field($_POST['search_term']);
@@ -1312,6 +1332,11 @@ class OMG_WooCommerce_Enhanced {
     }
     
     public function ajax_test_api() {
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Insufficient permissions');
+        }
+        
         check_ajax_referer('omg_woo_admin_nonce', 'nonce');
         
         $api_key = get_option('omg_woo_every_org_api_key', '');
@@ -1344,6 +1369,11 @@ class OMG_WooCommerce_Enhanced {
     }
     
     public function ajax_generate_report() {
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Insufficient permissions');
+        }
+        
         check_ajax_referer('omg_woo_admin_nonce', 'nonce');
         
         $report_data = array(

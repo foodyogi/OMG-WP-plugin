@@ -285,7 +285,7 @@ class OMG_WooCommerce_Admin {
         global $wpdb;
         
         $table_name = $wpdb->prefix . 'omg_woo_donations';
-        $donations = $wpdb->get_results("SELECT * FROM $table_name ORDER BY created_at DESC LIMIT 50");
+        $donations = $wpdb->get_results($wpdb->prepare("SELECT * FROM %i ORDER BY created_at DESC LIMIT %d", $table_name, 50));
         
         ?>
         <div class="wrap omg-admin-wrap">
@@ -354,9 +354,9 @@ class OMG_WooCommerce_Admin {
         $donations_table = $wpdb->prefix . 'omg_woo_donations';
         $impact_table = $wpdb->prefix . 'omg_woo_impact';
         
-        $total_donated = $wpdb->get_var("SELECT SUM(amount) FROM $donations_table WHERE status = 'completed'");
-        $total_orders = $wpdb->get_var("SELECT COUNT(*) FROM $donations_table");
-        $total_charities = $wpdb->get_var("SELECT COUNT(DISTINCT charity_id) FROM $donations_table");
+        $total_donated = $wpdb->get_var($wpdb->prepare("SELECT SUM(amount) FROM %i WHERE status = %s", $donations_table, 'completed'));
+        $total_orders = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM %i", $donations_table));
+        $total_charities = $wpdb->get_var($wpdb->prepare("SELECT COUNT(DISTINCT charity_id) FROM %i", $donations_table));
         
         ?>
         <div class="wrap omg-admin-wrap">
@@ -454,6 +454,11 @@ class OMG_WooCommerce_Admin {
     }
     
     public function ajax_test_charity_search() {
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Insufficient permissions');
+        }
+        
         check_ajax_referer('omg_woo_admin_nonce', 'nonce');
         
         $search_term = sanitize_text_field($_POST['search_term']);
@@ -464,6 +469,11 @@ class OMG_WooCommerce_Admin {
     }
     
     public function ajax_test_donation() {
+        // Check user capabilities
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Insufficient permissions');
+        }
+        
         check_ajax_referer('omg_woo_admin_nonce', 'nonce');
         
         $every_org = new OMG_WooCommerce_EveryOrg();
@@ -476,7 +486,7 @@ class OMG_WooCommerce_Admin {
         global $wpdb;
         
         $table_name = $wpdb->prefix . 'omg_woo_donations';
-        $recent_donations = $wpdb->get_results("SELECT * FROM $table_name ORDER BY created_at DESC LIMIT 5");
+        $recent_donations = $wpdb->get_results($wpdb->prepare("SELECT * FROM %i ORDER BY created_at DESC LIMIT %d", $table_name, 5));
         
         if (empty($recent_donations)) {
             echo '<p>No recent donations</p>';
