@@ -36,6 +36,9 @@ class OMG_WooCommerce_Enhanced {
         // Shortcodes
         add_shortcode('omg_impact_dashboard', array($this, 'render_impact_dashboard'));
         add_shortcode('omg_certification_badge', array($this, 'render_certification_badge'));
+        add_shortcode('omg_impact_summary', array($this, 'render_impact_summary'));
+        add_shortcode('omg_donation_counter', array($this, 'render_donation_counter'));
+        add_shortcode('omg_charity_list', array($this, 'render_charity_list'));
         add_shortcode('omg_external_verification', array($this, 'render_external_verification'));
         add_shortcode('omg_registration_helper', array($this, 'render_registration_helper'));
         
@@ -73,12 +76,20 @@ class OMG_WooCommerce_Enhanced {
     }
     
     public function enqueue_frontend_scripts() {
-        wp_enqueue_style('omg-woo-frontend', OMG_WOO_PLUGIN_URL . 'assets/css/frontend.css', array(), OMG_WOO_VERSION);
+        // Add Google Fonts
+        wp_enqueue_style('omg-google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap', array(), null);
+        
+        // Main styles and scripts - using the fixed version with !important rules to ensure proper display
+        wp_enqueue_style('omg-woo-frontend', OMG_WOO_PLUGIN_URL . 'assets/css/frontend-fixed.css', array('omg-google-fonts'), OMG_WOO_VERSION);
         wp_enqueue_script('omg-woo-frontend', OMG_WOO_PLUGIN_URL . 'assets/js/frontend.js', array('jquery'), OMG_WOO_VERSION, true);
+        
+        // Add the frontend-fix.js script to ensure proper display
+        wp_enqueue_script('omg-woo-frontend-fix', OMG_WOO_PLUGIN_URL . 'assets/js/frontend-fix.js', array('jquery', 'omg-woo-frontend'), OMG_WOO_VERSION, true);
         
         wp_localize_script('omg-woo-frontend', 'omg_woo_ajax', array(
             'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('omg_woo_nonce')
+            'nonce' => wp_create_nonce('omg_woo_nonce'),
+            'plugin_url' => OMG_WOO_PLUGIN_URL
         ));
     }
     
